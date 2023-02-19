@@ -1,15 +1,15 @@
 import { StyleSheet, View, Text, FlatList } from "react-native";
-import Header from "./componentsForAll/Header";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 //------------------------------------------------------------------------\\
 import ButtonC from "./componentsForAll/ButtonC";
+import HeaderC from "./componentsForAll/HeaderC";
 import Account from "./account/Account";
 import DATA from "./Data";
 
 const Menu = ({navigation}) => {
     return(
         <View style={styles.mainContainer}>
-            <Header>Welcom to loginApp</Header>
+            <HeaderC>Welcom to loginApp</HeaderC>
             <Text style = {styles.text}>
                 choose profile to login or register another one
             </Text>
@@ -17,15 +17,19 @@ const Menu = ({navigation}) => {
                 style = {styles.flatList}   
                 data = {DATA}
                 renderItem = {({item}) => 
-                    <Account id={item.id}>
+                    <Account 
+                        id={item.id}
+                        account = {() => navigation.navigate('Login')}
+                        addAccount = {() => navigation.navigate('Register')}
+                    >
                         {item.name}
                     </Account>
                     }
-                keyExtractor={item => item.id}
+                keyExtractor = {item => item.id}
             />
             <View>
-                <ButtonC bgC = {'#6C5B7B'}>Login</ButtonC>
-                <ButtonC bgC = {'#F67280'}>Register</ButtonC>
+                <ButtonC bgC = {'#6C5B7B'} onPress={() => navigation.navigate('Login')}>Login</ButtonC>
+                <ButtonC bgC = {'#F67280'} onPress={() => navigation.navigate('Register')}>Register</ButtonC>
             </View>
         </View>
     )

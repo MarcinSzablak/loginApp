@@ -4,10 +4,9 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import AddAccount from "./AddAccount"
 
 const Account = (props) => {
-
     if(props.id != "TheOnlyOne"){
         return(
-            <Pressable style={styles.box}>
+            <Pressable style={styles.box} onPress={props.account}>
                 <View style={styles.image}/>
                 <Text style={styles.text}>
                     {props.children}
@@ -17,7 +16,7 @@ const Account = (props) => {
     }
     else{
         return(
-            <AddAccount>{props.children}</AddAccount>
+            <AddAccount addAccount={props.addAccount}>{props.children}</AddAccount>
         )
     }
 }

@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 
 const AddAccount = (props) => {
     return(
-        <Pressable style={styles.box}>
+        <Pressable style={styles.box} onPress={props.addAccount}>
             <Feather name="user-plus" size={hp('6%')} color="white"/>
             <Text style={styles.text}>
                 {props.children}

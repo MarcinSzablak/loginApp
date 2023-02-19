@@ -3,7 +3,10 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 const ButtonC = (props) =>{
     return(
-        <Pressable style = {[styles.box, {backgroundColor: props.bgC}]}>
+        <Pressable 
+            style = {[styles.box, {backgroundColor: props.bgC}]} 
+            onPress={props.onPress}
+        >
             <Text style = {styles.text}>
                 {props.children}
             </Text>
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: hp('1.5%'),
-        padding: hp('1%'),
+        padding: hp('1.3%'),
         marginTop: hp('2.4%'),
     },
     text:{
