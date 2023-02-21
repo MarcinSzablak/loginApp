@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { View, Text, StyleSheet } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { A } from '@expo/html-elements';
@@ -6,8 +7,25 @@ import HeaderC from './componentsForAll/HeaderC';
 import InputHeader from './componentsForAll/InputHeader';
 import InputC from './componentsForAll/InputC';
 import ButtonC from "./componentsForAll/ButtonC";
+import { signUp } from './authentication/authenticantion';
 
 const Register = ({navigation}) =>{
+    const [name, setName] = useState('')
+    const [mail, setMail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const nameHandler = (result) =>{
+        setName(result)
+    }
+
+    const mailHandler = (result) =>{
+        setMail(result)
+    }
+
+    const passwordHandler = (result) =>{
+        setPassword(result)
+    }
+
     return(
         <View style={styles.mainContainer}>
             <HeaderC>Register</HeaderC>
@@ -15,14 +33,29 @@ const Register = ({navigation}) =>{
             <HeaderC>Welcome from!</HeaderC>
 
             <InputHeader>Add nic</InputHeader>
-            <InputC secure={false}>Username</InputC>
+            <InputC 
+                secure={false}
+                handler={nameHandler}
+            >
+                Username
+            </InputC>
             <View style={{margin:hp('2%')}}/>
 
             <InputHeader>ACCOUNT INFORMATION</InputHeader>
-            <InputC secure={false}>Email or phone number</InputC>
+            <InputC 
+                secure={false}
+                handler={mailHandler}
+            >
+                Email or phone number
+            </InputC>
             <View style={{margin:hp('2%')}}/>
 
-            <InputC secure={true}>Password</InputC>
+            <InputC 
+                secure={true}
+                handler={passwordHandler}
+            >
+                Password
+            </InputC>
             <View style={{margin:hp('1%')}}/>
             <Text style={styles.text}>
                 By registering, you agree to 
@@ -31,11 +64,11 @@ const Register = ({navigation}) =>{
                 <A href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' style={styles.link}> Privacy Policy.</A>
             </Text>
 
-            <ButtonC bgC={'#F67280'} onPress={() => navigation.navigate('AppScreen')}>Register</ButtonC>
+            <ButtonC bgC={'#F67280'} onPress={() => signUp(name, mail, password)}>Register</ButtonC>
         </View>
     )
 }
-
+//() => navigation.navigate('AppScreen')
 const styles = StyleSheet.create({
     mainContainer:{
         flex: 1,
@@ -53,5 +86,5 @@ const styles = StyleSheet.create({
         textDecorationLine:'underline',
     }
 })
-//style={styles.mainContainer}</View>
+
 export default Register;

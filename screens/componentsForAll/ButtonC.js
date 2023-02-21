@@ -2,10 +2,15 @@ import { Pressable, Text, StyleSheet } from "react-native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const ButtonC = (props) =>{
+    const handlePress = () => {
+        if (props.onPress) {
+            props.onPress();
+        }
+    }
     return(
         <Pressable 
             style = {[styles.box, {backgroundColor: props.bgC}]} 
-            onPress={props.onPress}
+            onPress={handlePress}
         >
             <Text style = {styles.text}>
                 {props.children}
@@ -30,4 +35,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ButtonC
+export default ButtonC;

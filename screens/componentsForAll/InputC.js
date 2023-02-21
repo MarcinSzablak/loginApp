@@ -21,6 +21,11 @@ const InputC = (props) =>{
         }
     }
 
+    const handleValueChange = (newValue) => {
+        setValue(newValue);
+        props.handler(newValue);
+    }
+
     return(
         <View style={styles.inputBox}>
             <TextInput 
@@ -29,7 +34,7 @@ const InputC = (props) =>{
                 placeholder={props.children}
                 placeholderTextColor={'rgba(243, 243, 243, 0.5)'}
                 defaultValue={value}
-                onChange={setValue}
+                onChange={(e) => handleValueChange(e.nativeEvent.text)}
                 secureTextEntry={visible}
             />
             {props.secure &&
