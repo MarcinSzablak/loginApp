@@ -1,8 +1,8 @@
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
 const AppScreen = () =>{
     return(
-        <View style={{alignItems:'center'}}>
+        <View style={styles.mainCointainer}>
             <Text>
                 Balls
             </Text>
@@ -10,4 +10,11 @@ const AppScreen = () =>{
     )
 }
 
+const styles = StyleSheet.create({
+    mainCointainer:{
+        flex:1,
+        alignItems:'center',
+        backgroundColor:'#355C7D'
+    }
+})
 export default AppScreen;

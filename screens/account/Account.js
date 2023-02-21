@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     text:{
         textAlign:'center',
         fontWeight:'700',
-        width:'100%',
+        width:'80%',
         color:'#FFFFFF',
         fontSize: hp('2.5%'),
     }

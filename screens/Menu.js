@@ -9,6 +9,7 @@ import DATA from "./Data";
 const Menu = ({navigation}) => {
     return(
         <View style={styles.mainContainer}>
+            <View style={{marginBottom:hp('3%')}}/>
             <HeaderC>Welcom to loginApp</HeaderC>
             <Text style = {styles.text}>
                 choose profile to login or register another one
@@ -16,6 +17,8 @@ const Menu = ({navigation}) => {
             <FlatList
                 style = {styles.flatList}   
                 data = {DATA}
+                horizontal={false}
+                showsVerticalScrollIndicator={false}
                 renderItem = {({item}) => 
                     <Account 
                         id={item.id}
