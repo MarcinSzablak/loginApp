@@ -14,7 +14,7 @@ export default function App() {
     <>
       <StatusBar style='auto'/>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Register'>
+        <Stack.Navigator initialRouteName='Menu'>
           <Stack.Screen
             name = 'Menu'
             component = {Menu}

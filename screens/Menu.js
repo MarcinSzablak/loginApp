@@ -17,8 +17,8 @@ const Menu = ({navigation}) => {
             <FlatList
                 style = {styles.flatList}   
                 data = {DATA}
-                horizontal={false}
-                showsVerticalScrollIndicator={false}
+                horizontal = {false}
+                showsVerticalScrollIndicator = {false}
                 renderItem = {({item}) => 
                     <Account 
                         id={item.id}

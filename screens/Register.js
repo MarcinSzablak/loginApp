@@ -10,14 +10,14 @@ import ButtonC from "./componentsForAll/ButtonC";
 import { signUp } from './authentication/authenticantion';
 
 const Register = ({navigation}) =>{
-    const [name, setName] = useState('')
+    //const [name, setName] = useState('')
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
-
+    /*
     const nameHandler = (result) =>{
         setName(result)
     }
-
+    */
     const mailHandler = (result) =>{
         setMail(result)
     }
@@ -26,12 +26,17 @@ const Register = ({navigation}) =>{
         setPassword(result)
     }
 
+    const pressHandler = () =>{
+        signUp(mail, password)
+        navigation.navigate('AppScreen')
+    }
+
     return(
         <View style={styles.mainContainer}>
             <HeaderC>Register</HeaderC>
             <View style={{margin:hp('-1%')}}/>
             <HeaderC>Welcome from!</HeaderC>
-
+            {/*
             <InputHeader>Add nic</InputHeader>
             <InputC 
                 secure={false}
@@ -40,7 +45,7 @@ const Register = ({navigation}) =>{
                 Username
             </InputC>
             <View style={{margin:hp('2%')}}/>
-
+            */}
             <InputHeader>ACCOUNT INFORMATION</InputHeader>
             <InputC 
                 secure={false}
@@ -64,11 +69,11 @@ const Register = ({navigation}) =>{
                 <A href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' style={styles.link}> Privacy Policy.</A>
             </Text>
 
-            <ButtonC bgC={'#F67280'} onPress={() => signUp(name, mail, password)}>Register</ButtonC>
+            <ButtonC bgC={'#F67280'} onPress={pressHandler}>Register</ButtonC>
         </View>
     )
 }
-//() => navigation.navigate('AppScreen')
+
 const styles = StyleSheet.create({
     mainContainer:{
         flex: 1,

@@ -4,7 +4,7 @@ const AppScreen = () =>{
     return(
         <View style={styles.mainCointainer}>
             <Text>
-                Balls
+                balls
             </Text>
         </View>
     )
