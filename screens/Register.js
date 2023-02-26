@@ -7,17 +7,17 @@ import HeaderC from './componentsForAll/HeaderC';
 import InputHeader from './componentsForAll/InputHeader';
 import InputC from './componentsForAll/InputC';
 import ButtonC from "./componentsForAll/ButtonC";
-import { signUp } from './authentication/authenticantion';
+//import { signUp } from './authentication/authenticantion';
 
 const Register = ({navigation}) =>{
-    //const [name, setName] = useState('')
+    const [name, setName] = useState('')
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
-    /*
+    
     const nameHandler = (result) =>{
         setName(result)
     }
-    */
+    
     const mailHandler = (result) =>{
         setMail(result)
     }
@@ -27,7 +27,7 @@ const Register = ({navigation}) =>{
     }
 
     const pressHandler = () =>{
-        signUp(mail, password)
+        //signUp(mail, password, name)
         navigation.navigate('AppScreen')
     }
 
@@ -36,7 +36,7 @@ const Register = ({navigation}) =>{
             <HeaderC>Register</HeaderC>
             <View style={{margin:hp('-1%')}}/>
             <HeaderC>Welcome from!</HeaderC>
-            {/*
+    
             <InputHeader>Add nic</InputHeader>
             <InputC 
                 secure={false}
@@ -45,7 +45,7 @@ const Register = ({navigation}) =>{
                 Username
             </InputC>
             <View style={{margin:hp('2%')}}/>
-            */}
+
             <InputHeader>ACCOUNT INFORMATION</InputHeader>
             <InputC 
                 secure={false}

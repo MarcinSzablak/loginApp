@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 //------------------------------------------------------------------------\\
 import Menu from './screens/Menu';
 import Login from './screens/Login';
@@ -11,7 +12,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <>
+    <GestureHandlerRootView style={{flex:1}}>
       <StatusBar style='auto'/>
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Menu'>
@@ -33,11 +34,11 @@ export default function App() {
           <Stack.Screen
             name = 'AppScreen'
             component = {AppScreen}
-            options = {{headerShown:false}}
+            options = {HeaderOptions}
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </GestureHandlerRootView>
   );
 }
 
