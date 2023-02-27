@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+/*import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import { app } from "../../firebase"
 
 const signUp = (mail, password, name) =>{
@@ -14,4 +14,4 @@ const signUp = (mail, password, name) =>{
     });
 }
 
-export { signUp };
+export { signUp };*/
