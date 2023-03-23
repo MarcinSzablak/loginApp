@@ -32,7 +32,7 @@ const Menu = ({navigation}) => {
             />
             <View>
                 <ButtonC bgC = {'#6C5B7B'} onPress={() => navigation.navigate('Login')}>Login</ButtonC>
-                <ButtonC bgC = {'#F67280'} onPress={() => navigation.navigate('Register')}>Register</ButtonC>
+                <ButtonC bgC = {'#F67280'} onPress={() =>navigation.navigate('Register')}>Register</ButtonC>
             </View>
         </View>
     )
