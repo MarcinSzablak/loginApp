@@ -1,37 +1,14 @@
 import { View , Pressable, Text, StyleSheet } from "react-native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import Animated,{ useSharedValue, useAnimatedStyle, withSpring, runOnJS} from "react-native-reanimated";
 
 const ButtonC = (props) =>{
-    const tapValue = useSharedValue(false);
-    
-    const tapStyle = useAnimatedStyle(() => {
-        return {
-          backgroundColor: props.bgC,
-          transform: [{
-            scale: withSpring(tapValue.value ? 0.9 : 1)
-          }],
-        };
-      });
-
-    const handlePress = Gesture.Tap() 
-    .onBegin(()=>{
-        tapValue.value = true;
-    })
-    .onEnd(()=>{
-        tapValue.value = false;
-    })
-
     return(
         <Pressable onPress={props.onPress}>
-            <GestureDetector gesture={handlePress}>
-                <Animated.View style = {[styles.box, tapStyle]} >
-                    <Text style = {styles.text}>
-                        {props.children}
-                    </Text>
-                </Animated.View>
-            </GestureDetector>
+            <View style = {[styles.box, {backgroundColor:props.bgC}]} >
+                <Text style = {styles.text}>
+                    {props.children}
+                </Text>
+            </View>
         </Pressable>
     )
 }

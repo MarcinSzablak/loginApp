@@ -1,12 +1,37 @@
+import { useState, useCallback, useEffect } from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 //------------------------------------------------------------------------\\
 import ButtonC from "./componentsForAll/ButtonC";
 import HeaderC from "./componentsForAll/HeaderC";
 import Account from "./account/Account";
-import DATA from "./Data";
 
 const Menu = ({navigation}) => {
+    const [loadedData, setLoadedData] = useState([]);
+
+    const getData = useCallback(async () => {
+      const res = await fetch('https://loginapp1-b9c42-default-rtdb.firebaseio.com//user.json');
+      const data = await res.json();
+  
+      const loadedData = [];
+      for (const key in data) {
+        loadedData.push({
+          name: data[key].name,
+          email: data[key].email,
+          age: data[key].age,
+          id: data[key].id
+        });
+      }
+  
+      return loadedData;
+    }, []);
+  
+    useEffect(() => {
+      getData().then((data) => {
+        setLoadedData(data);
+      });
+    }, [getData()]);
+
     return(
         <View style={styles.mainContainer}>
             <View style={{marginBottom:hp('3%')}}/>
@@ -16,7 +41,7 @@ const Menu = ({navigation}) => {
             </Text>
             <FlatList
                 style = {styles.flatList}   
-                data = {DATA}
+                data = {loadedData}
                 horizontal = {false}
                 showsVerticalScrollIndicator = {false}
                 renderItem = {({item}) => 

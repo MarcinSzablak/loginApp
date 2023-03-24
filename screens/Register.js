@@ -27,8 +27,30 @@ const Register = ({navigation}) =>{
     }
 
     const pressHandler = () =>{
-        //signUp(mail, password, name)
+        submit()
         navigation.navigate('AppScreen')
+    }
+
+    async function submit(){
+        const myObject={
+          name: name,
+          mail: mail,
+          password: password
+        }
+    
+        const res = await fetch('https://loginapp1-b9c42-default-rtdb.firebaseio.com/user.json',
+        {
+          method: 'POST',
+          body: JSON.stringify(myObject),
+          headers:{
+            'Content-Type': 'applicatio.json'
+          }
+        });
+        const data = await res.json();
+
+        setName('')
+        setMail('')
+        setPassword('')
     }
 
     return(
