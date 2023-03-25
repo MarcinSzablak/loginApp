@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import ButtonC from './componentsForAll/ButtonC';
@@ -11,6 +11,7 @@ import { A } from '@expo/html-elements';
 const Login = ({navigation}) =>{
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
+    const [loadedData, setLoadedData] = useState([]);
 
     const mailHandler = (result) =>{
         setMail(result)
@@ -18,6 +19,33 @@ const Login = ({navigation}) =>{
 
     const passwordHandler = (result) =>{
         setPassword(result)
+    }
+
+    const getData = useCallback(async () => {
+      const res = await fetch('https://loginapp1-b9c42-default-rtdb.firebaseio.com//user.json');
+      const data = await res.json();
+  
+      const loadedData = [];
+      for (const key in data) {
+        loadedData.push({
+          name: data[key].name,
+          mail: data[key].mail,
+          password: data[key].password,
+        });
+      }
+  
+      return loadedData;
+    }, []);
+  
+    useEffect(() => {
+      getData().then((data) => {
+        setLoadedData(data);
+      });
+    });
+    
+    const loginHandler = () =>{
+        console.log(loadedData)
+        //navigation.navigate('AppScreen')
     }
 
     return(
@@ -44,7 +72,7 @@ const Login = ({navigation}) =>{
             <A href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' style={styles.text}>Forgot your password?</A>
 
             <View style={{marginBottom:hp('3%')}}/>
-            <ButtonC onPress={() => navigation.navigate('AppScreen')} bgC={'#6C5B7B'}>Login</ButtonC>
+            <ButtonC onPress={loginHandler} bgC={'#6C5B7B'}>Login</ButtonC>
         </View>
     )
 }

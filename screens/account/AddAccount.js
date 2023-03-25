@@ -8,7 +8,7 @@ const AddAccount = (props) => {
             onPress={props.addAccount}
             style={styles.box}
         >
-                <Feather name="user-plus" size={hp('7%')} color="white"/>
+                <Feather name="user-plus" size={hp('6%')} color="white"/>
                 <Text style={styles.text}>
                     {props.children}
                 </Text>

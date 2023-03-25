@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { A } from '@expo/html-elements';
 //------------------------------------------------------------------------\\
@@ -28,10 +28,27 @@ const Register = ({navigation}) =>{
 
     const pressHandler = () =>{
         submit()
-        navigation.navigate('AppScreen')
     }
 
     async function submit(){
+        if(name.length < 2){
+            Alert.alert('Error','name must be longer then 2 leters', [
+                {text: 'ok'}
+            ])
+            return
+        }
+        else if(mail.includes('@') != true){
+            Alert.alert('Error','mail must include @', [
+                {text: 'ok'}
+            ])
+            return
+        }
+        else if(password.length < 4){
+            Alert.alert('Error','password must be longer then 3 leters', [
+                {text: 'ok'}
+            ])
+            return
+        }
         const myObject={
           name: name,
           mail: mail,
@@ -51,6 +68,8 @@ const Register = ({navigation}) =>{
         setName('')
         setMail('')
         setPassword('')
+
+        navigation.navigate('AppScreen')
     }
 
     return(

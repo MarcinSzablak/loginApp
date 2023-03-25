@@ -17,7 +17,7 @@ const Menu = ({navigation}) => {
       for (const key in data) {
         loadedData.push({
           name: data[key].name,
-          email: data[key].email,
+          mail: data[key].mail,
           age: data[key].age,
           id: data[key].id
         });
@@ -46,7 +46,8 @@ const Menu = ({navigation}) => {
                 showsVerticalScrollIndicator = {false}
                 renderItem = {({item}) => 
                     <Account 
-                        id={item.id}
+                        id={item.id} 
+                        key={item.mail}
                         account = {() => navigation.navigate('Login')}
                         addAccount = {() => navigation.navigate('Register')}
                     >
