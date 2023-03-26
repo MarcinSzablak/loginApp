@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, Alert } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { A } from '@expo/html-elements';
 //------------------------------------------------------------------------\\
-import HeaderC from './componentsForAll/HeaderC';
-import InputHeader from './componentsForAll/InputHeader';
-import InputC from './componentsForAll/InputC';
-import ButtonC from "./componentsForAll/ButtonC";
+import HeaderC from '../screens/componentsForAll/HeaderC';
+import InputHeader from '../screens/componentsForAll/InputHeader';
+import InputC from '../screens/componentsForAll/InputC';
+import ButtonC from "../screens/componentsForAll/ButtonC";
 //import { signUp } from './authentication/authenticantion';
 
 const Register = ({navigation}) =>{

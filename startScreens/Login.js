@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import ButtonC from './componentsForAll/ButtonC';
-import HeaderC from './componentsForAll/HeaderC';
-import InputC from './componentsForAll/InputC';
-import InputHeader from './componentsForAll/InputHeader';
+import ButtonC from '../screens/componentsForAll/ButtonC';
+import HeaderC from '../screens/componentsForAll/HeaderC';
+import InputC from '../screens/componentsForAll/InputC';
+import InputHeader from '../screens/componentsForAll/InputHeader';
 import { A } from '@expo/html-elements';
 
 
@@ -28,7 +28,6 @@ const Login = ({navigation}) =>{
       const loadedData = [];
       for (const key in data) {
         loadedData.push({
-          name: data[key].name,
           mail: data[key].mail,
           password: data[key].password,
         });
@@ -41,12 +40,27 @@ const Login = ({navigation}) =>{
       getData().then((data) => {
         setLoadedData(data);
       });
-    });
+    }, [getData()]);
     
-    const loginHandler = () =>{
-        console.log(loadedData)
-        //navigation.navigate('AppScreen')
-    }
+    const loginHandler = () => {
+        let isLoggedIn = false;
+        for (const data of loadedData) {
+          if (data.mail === mail && data.password === password) {
+            isLoggedIn = true;
+            break;
+          } else if (data.mail === mail) {
+            Alert.alert("Error", "Invalid password", [{ text: "OK" }]);
+            return;
+          } else {
+            Alert.alert("Error", "Invalid email", [{ text: "OK" }]);
+            return;
+          }
+        } 
+        if (isLoggedIn) {
+          navigation.navigate('Home');
+        }
+      };
+      
 
     return(
         <View style={styles.mainConteiner}>

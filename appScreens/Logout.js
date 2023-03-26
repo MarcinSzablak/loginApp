@@ -1,11 +1,8 @@
 import { Text, View, StyleSheet } from "react-native";
 
-const AppScreen = () =>{
+const Logout = () =>{
     return(
         <View style={styles.mainCointainer}>
-            <Text>
-                balls
-            </Text>
         </View>
     )
 }
@@ -17,4 +14,4 @@ const styles = StyleSheet.create({
         backgroundColor:'#355C7D'
     }
 })
-export default AppScreen;
+export default Logout;

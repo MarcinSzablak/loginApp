@@ -2,9 +2,9 @@ import { useState, useCallback, useEffect } from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 //------------------------------------------------------------------------\\
-import ButtonC from "./componentsForAll/ButtonC";
-import HeaderC from "./componentsForAll/HeaderC";
-import Account from "./account/Account";
+import ButtonC from "../screens/componentsForAll/ButtonC";
+import HeaderC from "../screens/componentsForAll/HeaderC";
+import Account from "../screens/account/Account";
 
 const Menu = ({navigation}) => {
     const [loadedData, setLoadedData] = useState([]);
