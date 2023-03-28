@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import ButtonC from '../screens/componentsForAll/ButtonC';
-import HeaderC from '../screens/componentsForAll/HeaderC';
-import InputC from '../screens/componentsForAll/InputC';
-import InputHeader from '../screens/componentsForAll/InputHeader';
+import ButtonC from '../componentsForAll/ButtonC';
+import HeaderC from '../componentsForAll/HeaderC';
+import InputC from '../componentsForAll/InputC';
+import InputHeader from '../componentsForAll/InputHeader';
 import { A } from '@expo/html-elements';
 
 

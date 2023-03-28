@@ -4,12 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { AntDesign } from '@expo/vector-icons'; 
 //------------------------------------------------------------------------\\
-import Menu from './startScreens/Menu';
-import Login from './startScreens/Login';
-import Register from './startScreens/Register';
-import Home from './appScreens/Home';
-import Favorite from './appScreens/Favorite';
-import Logout from './appScreens/Logout';
+import Menu from './screens/startScreens/Menu';
+import Login from './screens/startScreens/Login';
+import Register from './screens/startScreens/Register';
+import Home from './screens/appScreens/Home';
+import Favorite from './screens/appScreens/Favorite';
+import Logout from './screens/appScreens/Logout';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -18,10 +18,8 @@ const TabNavigator = () =>{
   return(
     <Tab.Navigator
       initialRouteName="Home"
-      activeColor="#e91e63"
-      labelStyle = {{ }}
-      labeled={false}
-      shifting={true}
+      shifting = {true}
+      activeColor='#ED8B54'
       backBehavior='none'
     >
       <Tab.Screen 
