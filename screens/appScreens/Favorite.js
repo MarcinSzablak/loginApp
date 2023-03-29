@@ -1,40 +1,53 @@
 import React, {useEffect, useState} from 'react';
-import { FlatList, View, StyleSheet, Image } from "react-native";
+import { FlatList, View, StyleSheet, Image, Pressable, Linking } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Cat = (props) =>{
     return(
-        <Image 
-        style={styles.cat}
-        source={props.url}
-        />
+        <Pressable onPress={() => Linking.openURL(props.url.uri)}>
+            <Image
+            style={styles.cat}
+            source={props.url}
+            />
+        </Pressable>
     )
 }
 
 
-const Favorite = () =>{
-    
-    const [data, setDate] = useState([]);
-    useEffect(() => {
-      fetchMore();
-    }, []);
 
-    const fetchMore = () => {
-      setDate(prevState => [
-        ...prevState,
-        ...Array.from({length: 20}).map((_, i) => i + 1 + prevState.length),
-      ]);
+const Favorite = () =>{
+    const [data, setData] = useState([]);
+    
+    const getMoviesFromApi = async () => {
+        const response = await fetch('https://cataas.com/cat?json=true');
+        const json = await response.json();
+        return json.url;
     };
+    
+    const fetchMore = async () => {
+        const newUrls = await Promise.all(
+            Array.from({length: 20}).map(async (_, i) => {
+                const url = 'https://cataas.com' + await getMoviesFromApi();
+                return url;
+            })
+        );
+        setData(prevData => [...prevData, ...newUrls]);
+    };
+    
+    useEffect(() => {
+        fetchMore();
+    }, []);
+    
     return(
         <View style={styles.mainCointainer}>
             <FlatList
                 data={data}
                 style={styles.list}
-                numColumns={1}
+                numColumns={2}
                 onEndReached={fetchMore}
                 keyExtractor={e => e}
                 renderItem={({item}) => (
-                <Cat url={{uri:'https://cataas.com/cat'}}/>
+                    <Cat url={{uri: item}}/>
                 )}
             />
         </View>
@@ -46,15 +59,10 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems:'center',
         backgroundColor:'#6C5B7B',
-        padding:30,
     },
     cat:{
-        width:wp('70%'),
-        height:wp('70%'),
-        borderWidth: 5,
-        borderColor: '#F3F3F3',
-        borderRadius: '10%',
-        marginBottom: 20
+        width: wp('50%'),
+        height: wp('50%'),
     }
 })
 export default Favorite;

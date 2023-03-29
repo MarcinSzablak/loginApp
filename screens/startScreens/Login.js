@@ -48,16 +48,14 @@ const Login = ({navigation}) =>{
           if (data.mail === mail && data.password === password) {
             isLoggedIn = true;
             break;
-          } else if (data.mail === mail) {
-            Alert.alert("Error", "Invalid password", [{ text: "OK" }]);
-            return;
-          } else {
-            Alert.alert("Error", "Invalid email", [{ text: "OK" }]);
-            return;
           }
         } 
         if (isLoggedIn) {
-          navigation.navigate('Home');
+          navigation.navigate('AppScreen');
+        }else{
+          Alert.alert('Error','wrong login data', [
+            {text: 'ok'}
+          ])
         }
       };
       
